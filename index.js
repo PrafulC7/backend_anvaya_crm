@@ -109,7 +109,7 @@ app.post("/agents", async (req, res) => {
     await agent.save();
 
     res.status(201).json(agent);
-  } catch (error) {
+  } catch (err) {
     if (
     err.response?.status === 409 ||
     err.response?.data?.message?.toLowerCase().includes("email")
