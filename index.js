@@ -110,10 +110,14 @@ app.post("/agents", async (req, res) => {
 
     res.status(201).json(agent);
   } catch (error) {
-    if (error.code === 11000) {
-      return res.status(400).json({ message: "Email already exists" });
-    }
-    res.status(500).json({ message: error.message });
+    if (
+    err.response?.status === 409 ||
+    err.response?.data?.message?.toLowerCase().includes("email")
+  ) {
+    alert("Email already exists. Please use a different email.");
+  } else {
+    alert("Error adding agent. Please try again.");
+  }
   }
 });
 
