@@ -114,9 +114,9 @@ app.post("/agents", async (req, res) => {
     err.response?.status === 409 ||
     err.response?.data?.message?.toLowerCase().includes("email")
   ) {
-    alert("Email already exists. Please use a different email.");
+    alert("Error adding agent.");
   } else {
-    alert("Error adding agent. Please try again.");
+    alert("Email already exists. Please use a different email.");
   }
   }
 });
